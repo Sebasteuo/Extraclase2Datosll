@@ -2,6 +2,7 @@
 #include <iostream>
 #include <memory>
 #include "Adapter.cpp"
+#include "Facade.cpp"
 
 /** PATRON BUILDER
  * El patrón Builder se usa para separar la construcción de un objeto complejo de su representación para que el mismo proceso
@@ -159,24 +160,14 @@ int main()
     nerf = NULL;
     pistolaDeAgua = NULL;
 
+    /*
+     * Facade
+     */
+    cout << "\n\nFacade \n" << endl;
 
+    SmartHouseFacade smartHouse;
+
+    smartHouse.salirDeLaCasa();
+    smartHouse.entrarALaCasa(4321);
+    smartHouse.entrarALaCasa(1234);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
