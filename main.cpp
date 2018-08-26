@@ -128,7 +128,8 @@ int main()
     /*
      * Builder
      */
-    cout << "Builder\n" << endl;
+    cout << "Builder" << '\r';
+    cout << "Boldeo" << endl;
 
     Cocinar Cocinar;
     VegetarianoSandwichBuilder VegetarianoSandwichBuilder;
@@ -167,7 +168,7 @@ int main()
 
     SmartHouseFacade smartHouse;
 
+    smartHouse.entrarALaCasa(1234);
     smartHouse.salirDeLaCasa();
-    smartHouse.entrarALaCasa(4321);
     smartHouse.entrarALaCasa(1234);
 }
