@@ -3,6 +3,7 @@
 #include <memory>
 #include "Adapter.cpp"
 #include "Facade.cpp"
+#include "Observer.cpp"
 
 /** PATRON BUILDER
  * El patrón Builder se usa para separar la construcción de un objeto complejo de su representación para que el mismo proceso
@@ -128,8 +129,7 @@ int main()
     /*
      * Builder
      */
-    cout << "Builder" << '\r';
-    cout << "Boldeo" << endl;
+    cout << "Builder" << endl;
 
     Cocinar Cocinar;
     VegetarianoSandwichBuilder VegetarianoSandwichBuilder;
@@ -171,4 +171,22 @@ int main()
     smartHouse.entrarALaCasa(1234);
     smartHouse.salirDeLaCasa();
     smartHouse.entrarALaCasa(1234);
+
+    /*
+     * Observer
+     */
+    cout << "\n\nObserver \n" << endl;
+
+
+    Subway *subway = new Subway;
+    Cliente *cliente1 = new Cliente;
+    Cliente *cliente2 = new Cliente;
+
+    subway->addObserver(cliente1);
+    subway->addObserver(cliente2);
+
+    subway->notifyObserver();
+
+    delete cliente1, cliente2, subway;
+
 }

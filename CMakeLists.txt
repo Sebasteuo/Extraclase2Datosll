@@ -3,4 +3,4 @@ project(Extraclase2Datosll)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Extraclase2Datosll main.cpp Adapter.cpp Facade.cpp)
+add_executable(Extraclase2Datosll main.cpp Adapter.cpp Facade.cpp LinkedList.cpp Observer.cpp)
