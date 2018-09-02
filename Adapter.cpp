@@ -3,9 +3,11 @@
 
 using namespace std;
 
+
 class PistolInterface{
 public:
     int municiones = 0;
+
 
     virtual void disparar() = 0;
     virtual void recargar() = 0;
@@ -16,6 +18,7 @@ public:
     Pistola(){
     }
 
+    ///Imprime un sonido de disparo.
     void disparar() override {
         if (municiones == 0)
             cout << "La pistola no tiene municiones" << endl;
@@ -26,6 +29,7 @@ public:
         }
     }
 
+    ///Recarga las municiones de la pistola.
     void recargar() override {
         municiones = 6;
         cout << "La pistola tiene ahora " << municiones << " municiones";
@@ -36,9 +40,11 @@ class PistolaDeAgua{
 public:
     int agua = 100;
 
+    ///Constructor.
     PistolaDeAgua(){
     }
 
+    ///Imprime un sonido de disparo de agua.
     void dispararAgua(){
         if (agua == 0){
             cout << "No queda agua" << endl;
@@ -51,6 +57,7 @@ public:
         }
     }
 
+    ///Recarga el tanque de agua de la pistola.
     void llenarDeAgua(){
         agua = 100;
         cout << "A la pistola le quedan " << agua << " mL" << endl;
@@ -59,14 +66,18 @@ public:
 
 class PistolaDeAguaAdapter : public PistolInterface{
 public:
+    /// Constructor.
+    /// \param pistolaDeAgua Objeto al que se adapta a Pistola.
     PistolaDeAguaAdapter(PistolaDeAgua *pistolaDeAgua){
         this->pistolaDeAgua = pistolaDeAgua;
     }
 
+    ///Imprime un sonido de disparo.
     void disparar() override {
         pistolaDeAgua->dispararAgua();
     }
 
+    ///Recarga las municiones de la pistola.
     void recargar() override {
         pistolaDeAgua->llenarDeAgua();
     }

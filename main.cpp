@@ -68,7 +68,7 @@ public:
     }
     void crearNuevoProductoSandwich()
     {
-        m_sandwich = make_unique<Sandwich>();
+        m_sandwich =  make_unique<Sandwich>();
     }
     virtual void hacerPan() = 0;
     virtual void hacerSalsa() = 0;
@@ -199,6 +199,7 @@ void pizza_information(PizzaFactory::TipodePizza TipodePizza)
     cout << "El precio de la pizza " << TipodePizza << " es " << pizza->getPrice()  << " colónes. " << std::endl;
 }
 
+
 int main()
 {
     /*
@@ -233,8 +234,8 @@ int main()
     nerf->llenarDeAgua();
 
     delete nerf, pistolaDeAgua;
-    nerf = NULL;
-    pistolaDeAgua = NULL;
+    nerf = nullptr;
+    pistolaDeAgua = nullptr;
 
     /*
      * Facade
@@ -272,19 +273,4 @@ int main()
     pizza_information(PizzaFactory::Suprema);
     pizza_information(PizzaFactory::Mantequilla);
     pizza_information(PizzaFactory::Hawaiana);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };

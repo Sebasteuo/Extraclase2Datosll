@@ -40,11 +40,15 @@ public:
 
 class Termometro{
 public:
+    /// Calcula la temperatura de la casa.
+    /// \return La temperatura en grados Centigrados.
     int calcularTemperatura(){
         int loading = 3;
         string loadingLabel = "Calculando temperatura";
 
         temperatura = rand() % 35;
+
+        //Disimula que esta calculando la temperatura.
         while(loading != 0){
             loadingLabel += ".";
 
@@ -54,12 +58,14 @@ public:
             }
             else{
                 cout << loadingLabel << endl;
+                //Congela el thread principal por 1 segundo.
                 this_thread::sleep_for (chrono::seconds(1));
             }
             loading--;
         }
 
-        cout << "La temperatura es de " << temperatura << endl;
+        cout << "La temperatura es de " << temperatura << " ºC" << endl;
+
         return temperatura;
     }
 
@@ -92,6 +98,9 @@ public:
         return clave;
     }
 
+    /// Verifica la clave ingresada.
+    /// \param num La clave digitada.
+    /// \return True si es la clave correcta o False si no.
     bool verificarClave(int num){
         if (num == getClave()){
             return true;
@@ -107,6 +116,7 @@ public:
     SmartHouseFacade(){
     }
 
+    /// Hace las acciones apropiadas cuando el propietario sale de la casa.
     void salirDeLaCasa(){
         alarma.encenderAlarma();
 
@@ -119,6 +129,8 @@ public:
         cout << endl;
     };
 
+    /// Hace las acciones apropiadas cuando el propietario entra de la casa.
+    /// \param clave La clave para ingresar a la casa.
     void entrarALaCasa(int clave){
         int temperatura = termometro.calcularTemperatura();
 
@@ -127,9 +139,9 @@ public:
         else
             aire.encenderAire();
 
+        ///Verifica la clave.
         if (verificador.verificarClave(clave)){
             alarma.apagarAlarma();
-
             luces.lucesEncendidas();
             cout << endl;
 
